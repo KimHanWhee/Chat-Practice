@@ -62,7 +62,6 @@ public class Users {
     public void updateUser(SignUpRequest request) {
         this.userBirth = request.getUserBirth();
         this.userName = request.getUserName();
-        this.userPw = request.getUserPw();
         this.userId = request.getUserId();
     }
 

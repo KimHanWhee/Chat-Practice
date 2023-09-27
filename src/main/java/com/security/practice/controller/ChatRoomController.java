@@ -32,6 +32,10 @@ public class ChatRoomController {
     public Page<ChatRoomResponse> myRooms(@PageableDefault(size = 5) Pageable pageable){
         return chatRoomService.getMyRooms(pageable);
     }
+    @GetMapping("/all")
+    public Page<ChatRoomResponse> getAllRooms(@PageableDefault(size=5) Pageable pageable){
+        return chatRoomService.getAllRooms(pageable);
+    }
 
     @PostMapping("/join")
     public ResponseEntity<ChatRoom> joinRoom(@RequestBody HashMap<String, String> request) throws NotExitedChatRoom, AlreadyExistException {

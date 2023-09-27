@@ -79,6 +79,10 @@ public class ChatRoomService {
         }
     }
 
+    public Page<ChatRoomResponse> getAllRooms(Pageable pageable) {
+        return chatRoomRepository.findAll(pageable).map(ChatRoomResponse::new);
+    }
+
     @Transactional
     public ResponseEntity<ChatRoom> joinRoom(String chatRoomName) throws NotExitedChatRoom, AlreadyExistException {
         try {
@@ -104,5 +108,6 @@ public class ChatRoomService {
     public Long getChatRoomByName(String chatRoomName) {
         return chatRoomRepository.findByName(chatRoomName).orElseThrow().getId();
     }
+
 
 }
