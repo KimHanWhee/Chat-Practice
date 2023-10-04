@@ -25,6 +25,7 @@ public class ChatRoom {
     @Column(unique = true)
     private String name;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private Users creator;
@@ -33,7 +34,7 @@ public class ChatRoom {
     @ManyToMany(mappedBy = "participantChatRooms")
     private List<Users> participants = new ArrayList<>();
 
-
+    @JsonBackReference
     @OneToMany(mappedBy = "chatRoom", cascade = CascadeType.ALL)
     private List<ChatMessage> messages;
 

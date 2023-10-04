@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/chat")
@@ -41,6 +42,12 @@ public class ChatRoomController {
     public ResponseEntity<ChatRoom> joinRoom(@RequestBody HashMap<String, String> request) throws NotExitedChatRoom, AlreadyExistException {
         String chatRoomName = request.get("chatRoomName");
         return chatRoomService.joinRoom(chatRoomName);
+    }
+
+    @PostMapping("/search")
+    public Page<ChatRoom> searchChatRoom(@PageableDefault(size = 5) Pageable pageable, @RequestBody HashMap<String, String> request){
+        String chatRoomName = request.get("chatRoomName");
+        return chatRoomService.searchChatRoom(chatRoomName, pageable);
     }
 
 }

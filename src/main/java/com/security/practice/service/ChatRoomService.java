@@ -110,4 +110,7 @@ public class ChatRoomService {
     }
 
 
+    public Page<ChatRoom> searchChatRoom(String chatRoomName, Pageable pageable) {
+        return chatRoomRepository.findByNameContaining(chatRoomName, pageable);
+    }
 }
